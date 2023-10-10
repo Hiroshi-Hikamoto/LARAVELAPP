@@ -130,3 +130,5 @@ Route::get('/contactChats', [App\Http\Controllers\MsmWhatsAppController::class, 
  Route::get('getMesaVot', [App\Http\Controllers\TestigoController::class, 'getMesaVot'])->name('getMesaVot')->middleware('auth');
  
  Route::post('sendWS', [App\Http\Controllers\NotificacionesController::class, 'sendWS'])->name('sendWS');
+
+ Route::post('/importar-archivo', [App\Http\Controllers\ArchivoController::class, 'importar'])->name('importar-archivo');

@@ -29,7 +29,7 @@ function selectMuni(e){
         data: {_token:dataToken, tipo:2, idDepartameto:idDepartameto,idMunicipio:idMunicipio},
         success: function(data) {
             $("#id_mesa").empty();
-            $("#id_mesa").append("<option value='0'>Seleeciona una opcion</option>" );
+            $("#id_mesa").append("<option value='0'>0</option>" );
             for(i=0; i<data.length; i++){
                 $("#id_mesa").append("<option value='"+data[i].Zonacomuna+"'> "+data[i].Zonacomuna+"</option>" );
                 $("#id_mesa").prop( "disabled", false );
@@ -49,7 +49,7 @@ function selectZona(e){
         data: {_token:dataToken, tipo:3, idDepartameto:idDepartameto,idMunicipio:idMunicipio,idZona:idZona},
         success: function(data) {
             $("#id_puesto").empty();
-            $("#id_puesto").append("<option value='0'>0</option>" );
+            $("#id_puesto").append("<option value='0'>Seleecciona una opcion</option>" );
             for(i=0; i<data.length; i++){
                 $("#id_puesto").append("<option value='"+data[i].Pto+"'> "+data[i].Puesto+"</option>" );
                 $("#id_puesto").prop( "disabled", false );

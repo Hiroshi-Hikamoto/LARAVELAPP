@@ -10,25 +10,53 @@
         
         <div class="card">
             <div class="card-header">
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-
+            
                     <span id="card_title">
                         {{ __('Filtro') }}
                     </span>
+
+                    <!-- Button trigger modal -->
+                    
+                    <div class="float-right">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"> Cargar Archivo </button>
+                    </div>
+
+                    <!-- Modal -->
+                    <form action="{{ route('importar-archivo') }}" method="post" enctype="multipart/form-data">
+                    @csrf
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Cargar Archivo</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <label for="archivo">Seleccionar Archivo:</label>
+                            <input type="file" name="archivo" id="archivo" accept=".csv">                        
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">Cargar Archivo</button>
+                        </div>
+                        </form>
+                        </div>
+                    </div>
+                    </div>
+                    </form>
 
                      <div class="float-right">
                         {{-- <a href="{{ route('testigos.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
                           {{ __('Create New') }}
                         </a> --}}
                       </div>
-                </div>
             </div>
             @if ($message = Session::get('success'))
                 <div class="alert alert-success">
                     <p>{{ $message }}</p>
                 </div>
             @endif
-
             <div class="card-body">
                 <div class="row">
                     <div class="col-sm-3">
@@ -70,11 +98,13 @@
                     </a>
                 </div>
             </div>
+
         </div>
         <div id="tablaTestigos" >
         </div>
     </div>
 @endsection
+
 
 @section('js')
     {{Html::script(asset('js/testigos/testigos.js'))}}
