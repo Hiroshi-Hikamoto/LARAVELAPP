@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
  * Class Cargatestigo
  *
  * @property $id
+ * @property $idCargueArchivo
  * @property $Cedula
  * @property $PrimerNombre
  * @property $SegundoNombre
@@ -28,6 +29,7 @@ class Cargatestigo extends Model
 {
     
     static $rules = [
+		'idCargueArchivo' => 'requiered',
 		'Cedula' => 'required',
 		'PrimerNombre' => 'required',
 		'SegundoNombre' => 'required',
@@ -49,7 +51,7 @@ class Cargatestigo extends Model
      *
      * @var array
      */
-    protected $fillable = ['Cedula','PrimerNombre','SegundoNombre','PrimerApellido','SegundoApellido','Celular','Correo','Departamento','Municipio','Zona','Puesto','Mesa'];
+    protected $fillable = ['idCargueArchivo', 'Cedula','PrimerNombre','SegundoNombre','PrimerApellido','SegundoApellido','Celular','Correo','Departamento','Municipio','Zona','Puesto','Mesa'];
 
 
 

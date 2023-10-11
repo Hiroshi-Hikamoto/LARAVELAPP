@@ -134,8 +134,13 @@ class TestigoController extends Controller
         }elseif ($tipo == 2) {
             $idDepartameto = $request->idDepartameto;
             $idMunicipio = $request->idMunicipio;
-            $zona = PuestosVotacion::select('Zonacomuna','Zonacomuna')->where('Dpt',$idDepartameto)
-                                     ->where('Mpio',$idMunicipio )->distinct()->get();
+            // $zona = PuestosVotacion::select('Zonacomuna','Zonacomuna')->where('Dpt',$idDepartameto)
+            //                          ->where('Mpio',$idMunicipio )->distinct()->get();
+
+            $zona = PuestosVotacion::selectRaw("Zonacomuna,count(*) as cant")
+            ->groupBy("Zonacomuna")
+            ->orderBy("Zonacomuna", "asc")
+            ->get();                        
             return response()->json($zona);
         }elseif ($tipo == 3) {
             $idDepartameto = $request->idDepartameto;

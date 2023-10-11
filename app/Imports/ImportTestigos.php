@@ -5,6 +5,7 @@ namespace App\Imports;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\ToModel;
 use App\Models\Cargatestigo;
+use App\Models\idCargueArchivo;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Facades\Excel;
 use Maatwebsite\Excel\Concerns\ToCollection;
@@ -19,6 +20,7 @@ class ImportTestigos implements ToModel, WithHeadingRow, WithCustomCsvSettings
     public function model(array $row)
     {
         return new Cargatestigo([
+            'idCargueArchivo' => $row['idCArgueArchivo']
             'Cedula' => $row['Cedula'],
             'PrimerNombre' => $row['PrimerNombre'],
             'SegundoNombre' => $row['SegundoNombre'],
